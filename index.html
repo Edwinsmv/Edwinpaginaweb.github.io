@@ -89,6 +89,11 @@
             transform: translateY(50px);
             animation: slideUp 1s forwards;
             animation-delay: 1s;
+            border: 2px solid #2d6a4f;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .fruta img {
@@ -379,7 +384,8 @@
         </div>
 
         <!-- Maracuyá -->
-        <div class="fruta" id="maracu" alt="Maracuyá">
+        <div class="fruta" id="maracuya">
+            <img src="maracuya.avif" alt="Maracuyá">
             <div>
                 <h3>Maracuyá</h3>
                 <p>La maracuyá es una de las frutas más populares de la región, conocida por su sabor ácido y refrescante. La pulpa de esta fruta es jugosa y llena de semillas, perfecta para jugos y postres.</p>
@@ -459,9 +465,26 @@
         showSlide(currentSlide);
     }
 
-    // Inicializar el carrusel
     showSlide(currentSlide);
+
+    // Función de búsqueda
+    function searchFruit() {
+        var input, filter, frutas, fruta, i, txtValue;
+        input = document.getElementById('searchInput');
+        filter = input.value.toUpperCase();
+        frutas = document.querySelectorAll('.fruta');
+        for (i = 0; i < frutas.length; i++) {
+            fruta = frutas[i];
+            txtValue = fruta.textContent || fruta.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                fruta.style.display = "";
+            } else {
+                fruta.style.display = "none";
+            }
+        }
+    }
 </script>
 
 </body>
 </html>
+
